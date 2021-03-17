@@ -9,7 +9,7 @@ aim = vector(0, -10)
 
 def color():
     colores = ["blue","black","brown","yellow","green","orange","beige","turquoise","pink"]
-    random(colores)
+    random.rand(colores)
     return colores[0]
 random_color = color()
 
