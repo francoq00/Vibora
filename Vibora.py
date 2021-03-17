@@ -1,3 +1,4 @@
+import random
 from turtle import *
 from random import randrange
 from freegames import square, vector
@@ -6,15 +7,12 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
-<<<<<<< HEAD
-def color():
-    colores = ["blue","black","brown","yellow","green","orange","beige","turquoise","pink"]
-    random.rand(colores)
-    return colores[0]
-random_color = color()
+coloresSerp = ["blue","black","brown","yellow","green","orange","beige","turquoise","pink"]
+colorrandomS = random.choice(coloresSerp)
 
-=======
->>>>>>> parent of 695b88e (Update Vibora.py)
+coloresCom = ["blue","black","brown","yellow","green","orange","beige","turquoise","pink"]
+colorrandomC = random.choice(coloresCom)
+
 def change(x, y):
     "Change snake direction."
     aim.x = x
@@ -44,11 +42,12 @@ def move():
         snake.pop(0)
 
     clear()
+    
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, colorrandomS)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, colorrandomC)
     update()
     ontimer(move, 100)
 
