@@ -74,6 +74,7 @@ def move():
     ontimer(move, 100)
 
  #Definimos el ciclo aleatorio de la comida
+def foodRand():
     val= random.randrange(1,5)
     if val == 1:
         if food.x <= 190:
