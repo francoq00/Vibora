@@ -4,7 +4,6 @@ import random
 from turtle import *
 #importamos un paquete espeficico de random
 from random import randrange
-import freegames
 #importamos dos paquetes especificos de free games.
 from freegames import square, vector
 
@@ -21,6 +20,23 @@ colorrandomS = random.choice(coloresSerp)
 #Se hace el mismo proceso de arriba.
 coloresCom = ["blue","black","brown","yellow","green","orange","beige","turquoise","pink"]
 colorrandomC = random.choice(coloresCom)
+
+#Definimos el ciclo aleatorio de la comida.
+#No supimos como hacerlo.
+#def foodRand():
+    #val = random.randrange(1,5)
+    #if val == 1:
+        #if food.x <= -150:
+            #food.x +=10 
+    #elif val == 2:
+        #if food.x >= 150:
+            #food.x -=10
+    #elif val == 3:
+        #if food.y <= -150:
+            #food.y += 10
+    #elif val == 4:
+        #if food.y >= 150:
+            #food.y -= 10
 
 #Definimos el cambio de posicion de la serpiente en x,y.
 def change(x, y):
@@ -66,30 +82,11 @@ def move():
     #Definimos el ciclo de la serpiente.
     for body in snake:
         square(body.x, body.y, 9, colorrandomS)
-    # Mando a mover la comida
-    foodRand()
-   
     #Se sigue actualizando.
+    square(food.x, food.y, 9, colorrandomC)
     update()
     ontimer(move, 100)
-
- #Definimos el ciclo aleatorio de la comida
-def foodRand():
-    val= random.randrange(1,5)
-    if val == 1:
-        if food.x <= 190:
-            food.x +=10
-            
-    if val == 2:
-        food.x >= -190:
-            food.x -=10
-    if val == 3:
-        food.y <= 190:
-            food.y += 10
-    if val == 4:
-        food.y >= -190:
-            food.y -= 10
-            
+               
 #Medida de nuestra pantalla.
 setup(420, 420, 370, 0)
 #Escondemos la forma de tortuga.
