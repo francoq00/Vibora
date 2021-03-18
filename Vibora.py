@@ -1,10 +1,16 @@
-import random #importamos random
-from turtle import * #importamos turtle
-from random import randrange #importamos un paquete espeficico de random
-from freegames import square, vector #importamos dos paquetes especificos de free games.
+#importamos random
+import random
+#importamos turtle
+from turtle import *
+#importamos un paquete espeficico de random
+from random import randrange
+#importamos dos paquetes especificos de free games.
+from freegames import square, vector
 
-food = vector(0, 0) #Definimos la pocicion inicial e la que se encontrara la comida.
-snake = [vector(10, 0)] # definimos la posicion inicial donde comenzara la víbora.
+#Definimos la pocicion inicial e la que se encontrara la comida.
+food = vector(0, 0)
+# definimos la posicion inicial donde comenzara la víbora.
+snake = [vector(10, 0)]
 aim = vector(0, -10)
 
 #Definimos un arreglo de colores para la serpiente y para la comida, respectivamente.
@@ -15,45 +21,62 @@ colorrandomS = random.choice(coloresSerp)
 coloresCom = ["blue","black","brown","yellow","green","orange","beige","turquoise","pink"]
 colorrandomC = random.choice(coloresCom)
 
-def change(x, y): #Definimos el cambio de posicion de la serpiente en x,y.
+#Definimos el cambio de posicion de la serpiente en x,y.
+def change(x, y):
     "Change snake direction."
-    aim.x = x #Cambia en x
-    aim.y = y #Cambia en y
+    #Cambia en x
+    aim.x = x
+    #Cambia en y
+    aim.y = y
 
-def inside(head): #definimos que cuando la cabeza se encuentre adentro de los limites, seguimos jugando.
+#definimos que cuando la cabeza se encuentre adentro de los limites, seguimos jugando.
+def inside(head):
     "Return True if head inside boundaries."
     return -200 < head.x < 190 and -200 < head.y < 190
 
-def move(): #Definimos como se va a mover la serpiente.
+#Definimos como se va a mover la serpiente.
+def move():
     "Move snake forward one segment."
     head = snake[-1].copy()
-    head.move(aim) #Solo se mueve la cabeza, el cuerpo solo sigue el movimiento.
-
-    if not inside(head) or head in snake: #Cuando 'topemos' con una pared, o contra el cuerpo, se va  apara el programa
-        square(head.x, head.y, 9, 'red') #Se va a poner la cabeza roja por el choque.
+    #Solo se mueve la cabeza, el cuerpo solo sigue el movimiento.
+    head.move(aim)
+    
+    #Cuando 'topemos' con una pared, o contra el cuerpo, se va a parar el programa.
+    if not inside(head) or head in snake:
+        #Se va a poner la cabeza roja por el choque.
+        square(head.x, head.y, 9, 'red')
         update()
         return
 
     snake.append(head)
 
-    if head == food: #Cuando estemos en la posicion donde este la comida, quiere decir que la agarramos.
-        print('Snake:', len(snake)) #Imprime cuantas 'comidas' hemos comido, osea cuanto mide la serpiente
-        food.x = randrange(-15, 15) * 10 #Aparece en un lugar random dentro del marco
+    #Cuando estemos en la posicion donde este la comida, quiere decir que la agarramos.
+    if head == food:
+        #Imprime cuantas 'comidas' hemos comido, osea cuanto mide la serpiente.
+        print('Snake:', len(snake))
+        #Aparece la comida en un lugar random dentro del marco.
+        food.x = randrange(-15, 15) * 10 
         food.y = randrange(-15, 15) * 10
     else:
-        snake.pop(0) #Si no, no pasa nada y no ganamos nada.
+        #Si no, no pasa nada y no ganamos nada.
+        snake.pop(0)
 
     clear()
     
-    for body in snake: #Definimos el ciclo de la serpiente.
+    #Definimos el ciclo de la serpiente.
+    for body in snake:
         square(body.x, body.y, 9, colorrandomS)
 
-    square(food.x, food.y, 9, colorrandomC) #Definimos el ciclo de la comida.
-    update() #Se sigue actualizando.
+    #Definimos el ciclo de la comida.
+    square(food.x, food.y, 9, colorrandomC)
+    #Se sigue actualizando.
+    update()
     ontimer(move, 100)
 
-setup(420, 420, 370, 0) #Medida de nuestra pantalla.
-hideturtle() #Escondemos la tortuga.
+#Medida de nuestra pantalla.
+setup(420, 420, 370, 0)
+#Escondemos la forma de tortuga.
+hideturtle()
 tracer(False)
 listen()
 #Definimos lo que pasara cuando teclemos ciertas teclas
