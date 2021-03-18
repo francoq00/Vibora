@@ -14,6 +14,23 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+#Definimos el ciclo aleatorio de la comida
+def foodRand():
+    val= random.randrange(1,5)
+    if val == 1:
+        if food.x <= 180:
+            food.x +=10
+            
+    if val == 2:
+        if food.x >= -180:
+            food.x -=10
+    if val == 3:
+        if food.y <= 180:
+            food.y += 10
+    if val == 4:
+        if food.y >= 180:
+            food.y -= 10
+            
 #Definimos un arreglo de colores para la serpiente y para la comida, respectivamente.
 coloresSerp = ["blue","black","brown","yellow","green","orange","beige","turquoise","pink"]
 #Con ayuda del random choice, se va a seleccuionar un color random del arreglo.
@@ -73,23 +90,6 @@ def move():
     update()
     ontimer(move, 100)
 
- #Definimos el ciclo aleatorio de la comida
-def foodRand():
-    val= random.randrange(1,5)
-    if val == 1:
-        if food.x <= 190:
-            food.x +=10
-            
-    if val == 2:
-        food.x >= -190:
-            food.x -=10
-    if val == 3:
-        food.y <= 190:
-            food.y += 10
-    if val == 4:
-        food.y >= -190:
-            food.y -= 10
-            
 #Medida de nuestra pantalla.
 setup(420, 420, 370, 0)
 #Escondemos la forma de tortuga.
