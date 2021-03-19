@@ -1,3 +1,8 @@
+# Actividad: Víbora.
+# Alejandro Lira A00830873
+# Franco Quintanilla A00826953
+# Fecha: 18 de marzo de 2021
+
 #importamos random
 import random
 #importamos turtle
